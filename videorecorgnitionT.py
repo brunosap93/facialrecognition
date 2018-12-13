@@ -57,7 +57,9 @@ args = vars(ap.parse_args())
 
 # load the known faces and embeddings
 print("[INFO] loading encodings...")
-data = pickle.loads(open("encodings.pickle", "rb").read())
+
+with open("encodings.pickle",'r+b') as f:
+	data = pickle.dump({"a dict":True},f,protocol=2)
  
 # initialize the video stream and pointer to output video file, then
 # allow the camera sensor to warm up
